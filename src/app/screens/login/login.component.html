@@ -1,0 +1,40 @@
+<div class="container-login">
+  <div class="card-left">
+    <h1>Ingreso</h1>
+    <form class="example-form">
+      <mat-form-field class="input-login">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+      <div class="mt-20">
+        <mat-form-field class="input-login">
+          <mat-label>Contraseña</mat-label>
+          <input type="email" matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher"
+            placeholder="Ex. pat@example.com">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          @if (passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')) {
+          <mat-error>Please enter a valid password</mat-error>
+          }
+          @if (passwordFormControl.hasError('required')) {
+          <mat-error>Password is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div class="mt-20">
+        <button mat-raised-button color="primary" class="button-login" (click)="handleLogin()">Ingresar</button>
+      </div>
+    </form>
+  </div>
+  <div class="card-right"></div>
+</div>
+<span class="alert" matSnackBarLabel [style]="{display: open ? 'block' : 'none'}">
+  {{ message }}
+</span>
